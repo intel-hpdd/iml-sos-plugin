@@ -26,7 +26,7 @@ def main():
         "block"
     ]
 
-    code = call(["sosreport", "--batch"] + args +
+    code = call(["sosreport"] + args + ["--batch"] +
                 list(flat_map(lambda x: ["--only", x], plugins)))
 
     sys.exit(code)
