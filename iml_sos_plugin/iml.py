@@ -24,7 +24,6 @@ class IML(Plugin, RedHatPlugin):
             copy_globs = [
                 "/var/log/chroma/",
                 "/var/log/chroma-agent*",
-                "/var/lib/chroma/"
             ]
         else:
             copy_globs = [
