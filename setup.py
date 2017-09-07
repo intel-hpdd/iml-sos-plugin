@@ -26,7 +26,6 @@ setup(
     ],
     keywords='IML lustre',
     packages=find_packages(exclude=['*tests*']),
-    install_requires=['sosreport'],
     include_package_data=True,
     entry_points={
         'console_scripts': [
