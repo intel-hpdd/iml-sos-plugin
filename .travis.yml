@@ -1,0 +1,11 @@
+language: python
+python: '2.7'
+script: echo "no tests"
+deploy:
+  provider: pypi
+  skip_upload_docs: true
+  user: iml
+  password:
+    secure: 9XzKUPUkHuShFD0+7e0Xfz333UfK5esGHRPYCWvJ4PnMbloRkWBrNRVfjxFAL8tJIEWGDZZuuJccFH1AkgfthjDEcG3Vxi9SNHTHU2cH7G27IEcUScvD8a/sTfWxn1FAM3iOCTrV0pGvyBjG8hnUYXNfd0vIxgWPY1RWWH6ftiWUTDAH/Iv+M4KvH5LmjZUFw4ybGjsp+9soyQXjXzy+NoVK2e6X3cxjq/Smiq/Y8UYtUi+rjc2KBEuvDNQ9qqUc7MH/88DauUGlUOVZ2VI93oWR8Znkf3x7u93snqMfQgRp919KiWUIzJ3+QPiZW5NKGO6+ANKSqQMNsIol+xpiyNrl5UU4VhWF3bAQHchXB4d3EIb2hHp47OHEnf/rHUQaeRN5boxWc1/9bKK0l1zxgkr/m8qYjNxalViGk2FUmc7NTG6YFy9VHEzbxr7wfIfosPQ5HLWKPYBdS68awxBWki/Ozx3IzJ34E/ArJPpC6DK7MZnF8g3p0oWmKhqX7vwZGXDXlHI16zfUvd8m0hTv1LYaEa/vE/7TzEIviXT1vpYBUHS04HGFkfdIebSqeixWj61d6nKHSXZUvET82Mhzwq5ANWFf4ut9xEOq/9QVDsCx0ZNRaadVisQj2xEsaEdemm1v5jpuMU2XNBo8i6l/FGF8YTg4bAL2f6Pr4murhrk=
+  on:
+    tags: true
