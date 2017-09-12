@@ -31,9 +31,9 @@ class IML(Plugin, RedHatPlugin):
                 "/var/log/chroma-agent*.log",
             ]
 
-        copy_globs = copy_globs + ["/var/lib/chroma/settings/*", "/var/lib/chroma/targets/*"]
+        copy_globs += ["/var/lib/chroma/settings/*", "/var/lib/chroma/targets/*"]
 
-        [self.add_copy_spec_limit(x, sizelimit=limit) for x in copy_globs]
+        self.add_copy_spec(copy_globs, sizelimit=limit)
 
         self.add_cmd_output([
             'chroma-agent device_plugin --plugin=linux',
