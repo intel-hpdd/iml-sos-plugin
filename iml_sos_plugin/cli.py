@@ -23,7 +23,8 @@ def main():
         "processor",
         "memory",
         "filesys",
-        "block"
+        "block",
+        "yum",
     ]
 
     code = call(["sosreport"] + args + ["--batch"] +
