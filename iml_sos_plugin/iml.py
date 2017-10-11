@@ -17,8 +17,9 @@ class IML(Plugin, RedHatPlugin):
     requires_root = True
 
     def setup(self):
-        limit = self.get_option("log_size", default=0)
+        limit = self.get_option("log_size", default=None)
         all_logs = self.get_option("all_logs", default=False)
+        tailit = self.get_option("tailit", default=False)
 
         if all_logs:
             copy_globs = [
@@ -33,7 +34,7 @@ class IML(Plugin, RedHatPlugin):
 
         copy_globs += ["/var/lib/chroma/settings/*", "/var/lib/chroma/targets/*"]
 
-        self.add_copy_spec(copy_globs, sizelimit=limit)
+        self.add_copy_spec(copy_globs, sizelimit=limit, tailit=tailit)
 
         self.add_cmd_output([
             'chroma-agent device_plugin --plugin=linux',

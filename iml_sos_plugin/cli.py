@@ -23,10 +23,11 @@ def main():
         "processor",
         "memory",
         "filesys",
-        "block"
+        "block",
+        "yum",
     ]
 
-    code = call(["sosreport"] + args + ["--batch"] +
+    code = call(["sosreport"] + args + ["--batch", "--log_size=0"] +
                 list(flat_map(lambda x: ["--only", x], plugins)))
 
     sys.exit(code)
