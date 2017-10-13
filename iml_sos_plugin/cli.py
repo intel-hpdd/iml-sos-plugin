@@ -25,6 +25,7 @@ def main():
         "filesys",
         "block",
         "yum",
+        "zfs",
     ]
 
     code = call(["sosreport"] + args + ["--batch", "--log-size=0"] +
