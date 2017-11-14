@@ -30,6 +30,7 @@ setup(
     entry_points={
         'console_scripts': [
             'iml-diagnostics = iml_sos_plugin.cli:main',
+            'chroma-diagnostics = iml_sos_plugin.cli:chroma_diagnostics'
         ]
     }
 )
