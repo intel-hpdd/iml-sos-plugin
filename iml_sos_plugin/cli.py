@@ -32,3 +32,6 @@ def main():
                 list(flat_map(lambda x: ["--only", x], plugins)))
 
     sys.exit(code)
+
+def chroma_diagnostics():
+    print "chroma-diagnostics no longer exists. Please use 'iml-diagnostics' instead."
