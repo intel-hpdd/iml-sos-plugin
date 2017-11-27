@@ -16,6 +16,7 @@ def main():
 
     plugins = [
         "iml",
+        "corosync",
         "pacemaker",
         "kernel",
         "pci",
