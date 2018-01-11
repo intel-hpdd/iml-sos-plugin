@@ -54,8 +54,8 @@ class IML(Plugin, RedHatPlugin):
         db_dest = path.join(self.get_cmd_output_path(), db_file_name)
 
         self.get_command_output(
-            'pg_dump -U chroma -F p -Z 9 -w -f %s -T chroma_core_logmessage -T'
-            ' chroma_core_series -T chroma_core_sample_* chroma' % db_dest
+            'pg_dump -U chroma -F p -Z 9 -w -f %s -T chroma_core_logmessage* -T'
+            ' chroma_core_series* -T chroma_core_sample_* chroma' % db_dest
         )
 
         self.add_cmd_output(
