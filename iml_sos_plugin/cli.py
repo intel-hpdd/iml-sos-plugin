@@ -23,7 +23,7 @@ def main():
         "logs",
         "processor",
         "memory",
-	"multipath",
+	    "multipath",
         "filesys",
         "block",
         "yum",
