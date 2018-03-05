@@ -1,12 +1,17 @@
 %global pypi_name iml_sos_plugin
 
+%{?dist_version: %global source https://github.com/intel-hpdd/%{pypi_name}/archive/%{dist_version}.tar.gz}
+%{?dist_version: %global archive_version %{dist_version}}
+%{?!dist_version: %global source https://pypi.python.org/packages/source/i/%{pypi_name}/%{pypi_name}-%{version}.tar.gz}
+%{?!dist_version: %global archive_version %{version}}
+
 Name:           %{pypi_name}
 Version:        2.1.0
 Release:        1%{?dist}
 Summary:        A sosreport plugin for collecting IML data.
 License:        MIT
 URL:            https://pypi.python.org/pypi/%{pypi_name}
-Source0:        https://files.pythonhosted.org/packages/source/i/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        %{source}
 
 BuildArch:      noarch
 BuildRequires:  python2-devel
@@ -20,9 +25,17 @@ Obsoletes:      chroma-diagnostics
 A sosreport plugin for collecting IML data.
 
 %prep
-%autosetup -n %{pypi_name}-%{version}
+%if %{?dist_version:1}%{!?dist_version:0}
+%setup -n %{pypi_name}-%{archive_version}
+%else
+%setup -c -n %{rpm_name}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{rpm_name}.egg-info
+cd ..
+mv %{rpm_name}-%{version}/%{pypi_name}-%{version} ./%{pypi_name}-%{version}
+rmdir %{rpm_name}-%{version}
+mv %{pypi_name}-%{version} %{rpm_name}-%{version}
+%endif
 
 %build
 %{__python2} setup.py build
