@@ -19,7 +19,7 @@ enabled=1
 wq
 EOF
 
-eval export "$(grep -e "^TRAVIS=" -e "^TRAVIS_PULL_REQUEST_BRANCH=" "$MAPPED_DIR"/travis_env)"
+eval export "$(grep -e "^TRAVIS=" -e "^TRAVIS_BRANCH=" "$MAPPED_DIR"/travis_env)"
 
 groupadd --gid "$(stat -c '%g' "$MAPPED_DIR")" mocker
 useradd --uid "$(stat -c '%u' "$MAPPED_DIR")" --gid "$(stat -c '%g' "$MAPPED_DIR")" mocker
@@ -30,7 +30,7 @@ if ! su - mocker <<EOF; then
 set -xe
 cd "$MAPPED_DIR"
 make rpmlint
-make DIST_VERSION="$TRAVIS_PULL_REQUEST_BRANCH" build_test
+make DIST_VERSION="$TRAVIS_BRANCH" build_test
 EOF
     exit "${PIPESTATUS[0]}"
 fi
