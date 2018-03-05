@@ -41,6 +41,7 @@ mv %{buildroot}/%{python2_sitelib}/iml_sos_plugin/iml.py* %{buildroot}/%{python2
 
 %changelog
 * Mon Mar 5 2018 Joe Grund <joe.grund@intel.com> 2.1.0-1
+- Add Multipath info and more lustre debug (@utopiabound)
 
 * Wed Nov 15 2017 Will Johnson <william.c.johnson@intel.com> 2.0.4-1
 - Obsoletes chroma-diagnostics
