@@ -2,7 +2,7 @@
 
 %{?dist_version: %global source https://github.com/intel-hpdd/%{pypi_name}/archive/%{dist_version}.tar.gz}
 %{?dist_version: %global archive_version %{dist_version}}
-%{?!dist_version: %global source https://pypi.python.org/packages/source/i/%{pypi_name}/%{pypi_name}-%{version}.tar.gz}
+%{?!dist_version: %global source https://files.pythonhosted.org/packages/source/i/%{pypi_name}/%{pypi_name}-%{version}.tar.gz}
 %{?!dist_version: %global archive_version %{version}}
 
 Name:           %{pypi_name}
