@@ -28,9 +28,9 @@ A sosreport plugin for collecting IML data.
 %if %{?dist_version:1}%{!?dist_version:0}
 %setup -n %{pypi_name}-%{archive_version}
 %else
-%setup -c -n %{rpm_name}-%{version}
+%setup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
-rm -rf %{rpm_name}.egg-info
+rm -rf %{pypi_name}.egg-info
 %endif
 
 %build
