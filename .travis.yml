@@ -27,7 +27,6 @@ jobs:
       on:
         all_branches: true
         distributions: sdist bdist_wheel
-        repo: intel-hpdd/iml_sos_plugin
   - stage: deploy-copr
     if: branch =~ ^v\d+\.\d+\.\d+-.+$
     env: Type='Copr deploy'
