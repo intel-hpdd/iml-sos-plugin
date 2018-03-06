@@ -31,6 +31,7 @@ jobs:
   - stage: deploy-copr
     if: branch =~ ^v\d+\.\d+\.\d+-.+$
     env: Type='Copr deploy'
+    script: skip
     before_deploy:
     - docker pull centos:centos7
     - openssl aes-256-cbc -K $encrypted_253525cedcf6_key -iv $encrypted_253525cedcf6_iv -in include/copr-mfl.enc -out include/copr-mfl -d
