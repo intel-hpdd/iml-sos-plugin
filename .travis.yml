@@ -1,9 +1,11 @@
 language: python
 python: '2.7'
 sudo: required
+addons:
+  apt:
+    update: true
 services:
     - docker
-
 jobs:
   include:
   - stage: test
