@@ -27,7 +27,7 @@ def main():
         "filesys",
         "block",
         "yum",
-        "system",
+        "systemd",
     ]
 
     code = call(["sosreport"] + args + ["--batch", "--log-size=0"] +
