@@ -6,7 +6,7 @@
 %{?!dist_version: %global archive_version %{version}}
 
 Name:           %{pypi_name}
-Version:        2.2.1
+Version:        2.2.2
 Release:        1%{?dist}
 Summary:        A sosreport plugin for collecting IML data.
 License:        MIT
@@ -49,6 +49,9 @@ mv %{buildroot}/%{python2_sitelib}/iml_sos_plugin/iml.py* %{buildroot}/%{python2
 %{python2_sitelib}/sos/plugins/iml.py*
 
 %changelog
+* Tue Jun 5 2018 Joe Grund <joe.grund@intel.com> 2.2.2-1
+- fix plugin to use systemd
+
 * Tue Jun 5 2018 Joe Grund <joe.grund@intel.com> 2.2.1-1
 - Bump to latest moduletools
 
