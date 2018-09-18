@@ -28,6 +28,7 @@ def main():
         "block",
         "yum",
         "systemd",
+        "udev",
     ]
 
     code = call(["sosreport"] + args + ["--batch", "--log-size=0"] +
