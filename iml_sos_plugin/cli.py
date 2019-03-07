@@ -14,25 +14,7 @@ def flat_map(fn, xs):
 def main():
     args = sys.argv[1:]
 
-    plugins = [
-        "iml",
-        "corosync",
-        "pacemaker",
-        "kernel",
-        "pci",
-        "logs",
-        "processor",
-        "memory",
-        "multipath",
-        "filesys",
-        "block",
-        "yum",
-        "systemd",
-        "udev",
-    ]
-
-    code = call(["sosreport"] + args + ["--batch", "--log-size=0"] +
-                list(flat_map(lambda x: ["--only", x], plugins)))
+    code = call(["sosreport"] + args + ["--batch", "--log-size=0"])
 
     sys.exit(code)
 
