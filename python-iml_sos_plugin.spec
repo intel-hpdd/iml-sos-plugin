@@ -1,12 +1,12 @@
 %global pypi_name iml_sos_plugin
 
-%{?dist_version: %global source https://github.com/intel-hpdd/%{pypi_name}/archive/%{dist_version}.tar.gz}
+%{?dist_version: %global source https://github.com/whamcloud/%{pypi_name}/archive/%{dist_version}.tar.gz}
 %{?dist_version: %global archive_version %{dist_version}}
 %{?!dist_version: %global source https://files.pythonhosted.org/packages/source/i/%{pypi_name}/%{pypi_name}-%{version}.tar.gz}
 %{?!dist_version: %global archive_version %{version}}
 
 Name:           %{pypi_name}
-Version:        2.2.2
+Version:        2.3.0
 Release:        1%{?dist}
 Summary:        A sosreport plugin for collecting IML data.
 License:        MIT
@@ -49,6 +49,9 @@ mv %{buildroot}/%{python2_sitelib}/iml_sos_plugin/iml.py* %{buildroot}/%{python2
 %{python2_sitelib}/sos/plugins/iml.py*
 
 %changelog
+* Fri Mar 22 2019 Joe Grund <jgrund@whamcloud.com> 2.3.0-1
+- Run all plugins
+
 * Tue Jun 5 2018 Joe Grund <joe.grund@intel.com> 2.2.2-1
 - fix plugin to use systemd
 
