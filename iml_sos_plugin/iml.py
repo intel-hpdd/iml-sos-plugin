@@ -59,20 +59,4 @@ class IML(Plugin, RedHatPlugin):
             ' chroma_core_series* -T chroma_core_sample_* chroma' % db_dest
         )
 
-        self.add_cmd_output(
-            "rpm -V chroma-agent chroma-agent-management chroma-manager"
-            " chroma-manager-cli chroma-manager-libs",
-            suggest_filename="finger-print"
-        )
-
-        self.add_cmd_output(
-            "rpm -qa",
-            suggest_filename="rpm_packges_installed"
-        )
-
-        self.add_cmd_output(
-            "rabbitmqctl list_queues -p chromavhost",
-            suggest_filename="rabbit_queue_status"
-        )
-
 # vim: set et ts=4 sw=4 :
