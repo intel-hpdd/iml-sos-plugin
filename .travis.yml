@@ -26,8 +26,8 @@ jobs:
       on:
         all_branches: true
         distributions: sdist bdist_wheel
-  - stage: deploy-copr
-    if: branch =~ ^v\d+\.\d+\.\d+-.+$
+  - stage: deploy-copr-r5.0
+    if: branch =~ ^v\d+\.\d+\.\d+-.+-r5\.0$
     env: Type='Copr deploy'
     script: skip
     before_deploy:
