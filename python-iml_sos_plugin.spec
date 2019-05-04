@@ -1,17 +1,12 @@
-%global pypi_name iml_sos_plugin
-
-%{?dist_version: %global source https://github.com/whamcloud/%{pypi_name}/archive/%{dist_version}.tar.gz}
-%{?dist_version: %global archive_version %{dist_version}}
-%{?!dist_version: %global source https://files.pythonhosted.org/packages/source/i/%{pypi_name}/%{pypi_name}-%{version}.tar.gz}
-%{?!dist_version: %global archive_version %{version}}
-
-Name:           %{pypi_name}
+Name:           iml_sos_plugin
 Version:        2.3.0
-Release:        1%{?dist}
+# Release Start
+Release:    1%{?dist}
+# Release End
 Summary:        A sosreport plugin for collecting IML data.
 License:        MIT
-URL:            https://pypi.python.org/pypi/%{pypi_name}
-Source0:        %{source}
+URL:            https://github.com/whamcloud/%{name}
+Source0:        %{name}-%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRequires:  python2-devel
@@ -26,11 +21,11 @@ A sosreport plugin for collecting IML data.
 
 %prep
 %if %{?dist_version:1}%{!?dist_version:0}
-%setup -n %{pypi_name}-%{archive_version}
+%setup -n %{name}-%{archive_version}
 %else
-%setup -n %{pypi_name}-%{version}
+%setup -n %{name}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{name}.egg-info
 %endif
 
 %build
@@ -44,8 +39,8 @@ mv %{buildroot}/%{python2_sitelib}/iml_sos_plugin/iml.py* %{buildroot}/%{python2
 %files
 %{_bindir}/iml-diagnostics
 %{_bindir}/chroma-diagnostics
-%{python2_sitelib}/%{pypi_name}
-%{python2_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
+%{python2_sitelib}/%{name}
+%{python2_sitelib}/%{name}-%{version}-py?.?.egg-info
 %{python2_sitelib}/sos/plugins/iml.py*
 
 %changelog
