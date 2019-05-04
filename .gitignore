@@ -10,3 +10,4 @@
 .eggs
 dist
 build
+_topdir
