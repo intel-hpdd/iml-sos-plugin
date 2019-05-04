@@ -9,14 +9,13 @@ services:
 jobs:
   include:
   - stage: test
-    env: Type='mock build test'
-    before_install:
-    - docker pull centos:centos7
+    name: "copr build test"
     script:
-    - ./include/travis/run_in_centos7_docker.sh include/travis/mock_build_test.sh
+      - export SPEC=python-iml_sos_plugin.spec
+      - docker run -it -e SPEC="$SPEC" -e LOCAL_ONLY="True" -v $(pwd):/build:rw imlteam/copr
+      - ((`find _topdir/RPMS -name *.rpm | wc -l` > 0))
   - stage: deploy-pypi
-    if: branch =~ ^v\d+\.\d+\.\d+-1.*$
-    env: Type='PyPi deploy'
+    name: 'PyPi deploy'
     script: skip
     deploy:
       provider: pypi
@@ -26,15 +25,27 @@ jobs:
       on:
         all_branches: true
         distributions: sdist bdist_wheel
-  - stage: deploy-copr
-    if: branch =~ ^v\d+\.\d+\.\d+-.+$
-    env: Type='Copr deploy'
-    script: skip
-    before_deploy:
-    - include/travis/copr-deploy.sh prepare
-    deploy:
-      skip_cleanup: true
-      provider: script
-      script: ./travis_wait "./include/travis/run_in_centos7_docker.sh include/travis/copr-deploy.sh build"
-      on:
-        all_branches: true
+  - stage: cd
+    name: "Continuous Deployment"
+    script:
+      - export OWNER=managerforlustre
+      - export PROJECT=manager-for-lustre-devel
+      - export PACKAGE=iml_sos_plugin
+      - export SPEC=python-iml_sos_plugin.spec
+      - docker run -it -e OWNER="$OWNER" -e PROJECT="$PROJECT" -e PACKAGE="$PACKAGE" -e SPEC="$SPEC" -e KEY="$encrypted_253525cedcf6_key" -e IV="$encrypted_253525cedcf6_iv" -v $(pwd):/build:rw imlteam/copr
+  - stage: deploy-copr-r5.0
+    name: "Copr deploy"
+    script:
+      - export OWNER=managerforlustre
+      - export PROJECT=manager-for-lustre-5.0
+      - export PACKAGE=iml_sos_plugin
+      - export SPEC=python-iml_sos_plugin.spec
+      - docker run -it -e OWNER="$OWNER" -e PROJECT="$PROJECT" -e PACKAGE="$PACKAGE" -e SPEC="$SPEC" -e PROD="true" -e KEY="$encrypted_253525cedcf6_key" -e IV="$encrypted_253525cedcf6_iv" -v $(pwd):/build:rw imlteam/copr
+stages:
+  - test
+  - name: cd
+    if: branch = master AND type = push AND fork = false
+  - name: deploy-pypi
+    if: branch =~ ^v\d+\.\d+\.\d+-1.*$
+  - name: deploy-copr-r5.0
+    if: branch =~ ^v\d+\.\d+\.\d+-.+-r5\.0$
