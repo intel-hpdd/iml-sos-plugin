@@ -1,10 +1,9 @@
 BUILDROOT:=$(shell [ -d "/build" ] && echo "/build" || echo ".")
 TMPDIR:=$(shell mktemp -d)
 
-  srpm:
-	yum install -y epel-release
-	yum install -y rpm-build python2-devel python-setuptools
-	yum install -y ${BUILDROOT}/deps/python2-setuptools_scm-1.15.7-2.el7.noarch.rpm
+srpm:
+	yum copr enable -y managerforlustre/buildtools
+	yum install -y python2-devel python2-setuptools_scm
 	rm -rf ${TMPDIR}/_topdir
 	rm -rf ${TMPDIR}/scratch
 	mkdir -p ${TMPDIR}/_topdir/SOURCES
