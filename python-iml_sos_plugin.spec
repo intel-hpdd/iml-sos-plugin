@@ -1,5 +1,5 @@
 Name:           iml_sos_plugin
-Version:        2.3.0
+Version:        2.3.1
 # Release Start
 Release:    1%{?dist}
 # Release End
