@@ -5,10 +5,10 @@
 from os import path
 from datetime import datetime
 
-from sos.plugins import Plugin, RedHatPlugin
+from sos.plugins import Plugin, RedHatPlugin, UbuntuPlugin, DebianPlugin
 
 
-class IML(Plugin, RedHatPlugin):
+class IML(Plugin, RedHatPlugin, UbuntuPlugin, DebianPlugin):
     """IML Framework"""
 
     plugin_name = "iml"
@@ -31,7 +31,12 @@ class IML(Plugin, RedHatPlugin):
                 "/var/log/chroma-agent*.log",
             ]
 
-        copy_globs += ["/var/lib/chroma/settings/*", "/var/lib/chroma/targets/*"]
+        copy_globs += [
+            "/etc/iml/*.conf",
+            "/var/lib/chroma/*.conf",
+            "/var/lib/chroma/settings/*",
+            "/var/lib/chroma/targets/*",
+        ]
 
         self.add_copy_spec(copy_globs, sizelimit=limit, tailit=tailit)
 
