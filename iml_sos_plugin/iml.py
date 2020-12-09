@@ -9,8 +9,7 @@ from sos.plugins import Plugin, RedHatPlugin
 
 
 class IML(Plugin, RedHatPlugin):
-    """IML Framework
-    """
+    """IML Framework"""
 
     plugin_name = "iml"
     profiles = ("lustre",)

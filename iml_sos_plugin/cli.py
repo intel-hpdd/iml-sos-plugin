@@ -18,5 +18,6 @@ def main():
 
     sys.exit(code)
 
+
 def chroma_diagnostics():
     print "chroma-diagnostics no longer exists. Please use 'iml-diagnostics' instead."

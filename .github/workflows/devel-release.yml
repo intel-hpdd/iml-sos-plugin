@@ -1,0 +1,24 @@
+name: devel-release
+on:
+  push:
+    branches:
+      - master
+  push_python_iml:
+    name: Push to Copr devel (python-iml)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Push rpm
+        uses: ./.github/actions/copr
+        env:
+          PROD: false
+          OWNER: managerforlustre
+          PROJECT: manager-for-lustre-devel
+          PACKAGE: python-iml_sos_plugin
+          SPEC: python-iml_sos_plugin.spec
+          SRPM_TASK: srpm
+          WORKSPACE: ${{ github.workspace }}
+          KEY: ${{ secrets.key }}
+          IV: ${{ secrets.iv }}
